@@ -3,8 +3,10 @@ package laboratorio.pkgfinal;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.mongodb.morphia.annotations.Embedded;
 
 
+@Embedded
 public class Registro 
 {
     //Atributos 
