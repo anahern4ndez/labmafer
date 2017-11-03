@@ -16,18 +16,19 @@ import java.util.List;
  * @version 3/11/2017
  */
 public class Conexion {
-    
+    private Datastore ds;
     
     
     public void morphia(){
         MongoClient mongo = new MongoClient();
         Morphia morphia = new Morphia();
         morphia.map(Tanque.class).map(Registro.class).map(Region.class).map(Cilindro.class).map(Ortogonal.class).map(Cubico.class);
-        Datastore ds = morphia.createDatastore(mongo, "Acueducto"); // Base Datos
+        ds = morphia.createDatastore(mongo, "Acueducto"); // Base Datos
     }   
     
-    public void addTanque(){
-        
+    public void addCilindro(){
+        Cilindro cilindro = new Cilindro(5, 10, "001", 100, 5, 201, true);
+        ds.save(cilindro);
     }
     
     

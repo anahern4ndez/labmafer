@@ -5,22 +5,30 @@
  */
 package laboratorio.pkgfinal;
 
+import com.mongodb.MongoClient;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
 
 /**
  *
  * @author jose
  */
 public class Lab5 extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Lab5
      */
     private Timer timer;
+    private Datastore ds;
     public Lab5() {
         initComponents();
+        MongoClient mongo = new MongoClient();
+        Morphia morphia = new Morphia();
+        morphia.map(Tanque.class).map(Registro.class).map(Region.class).map(Cilindro.class).map(Ortogonal.class).map(Cubico.class);
+        ds = morphia.createDatastore(mongo, "Acueducto"); // Base Datos
     }
 
     /**
@@ -37,6 +45,11 @@ public class Lab5 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton1.setText("Comenzar Simulacion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +114,12 @@ public class Lab5 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_formWindowOpened
+
     
     public class actualizar implements ActionListener
     {
@@ -149,6 +168,8 @@ public class Lab5 extends javax.swing.JFrame {
                 new Lab5().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
