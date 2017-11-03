@@ -27,6 +27,17 @@ public class Tanque {
     
     public Tanque (){}
     
+    public Tanque (String identificacion, double porcentaje, int valvUso, double volumen, boolean enUso){
+        this.identificacion=identificacion;
+        this.porcentaje=porcentaje;
+        this.valvUso=valvUso;
+        this.volumen=volumen;
+        this.enUso=enUso;
+    }
+    
+    public void llenarTanque(){
+        
+    }
     
     
     
