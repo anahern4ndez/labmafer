@@ -36,7 +36,44 @@ public class Tanque {
     }
     
     public void llenarTanque(){
-        
+        porcentaje = 100;
+    }
+    
+    public void volumen(){
+    
+    }
+    
+    public void setValvulas(int n){
+        valvUso = n;
+    }
+    
+    public int getValvulas(){
+        return valvUso;
+    }
+    
+    public void setPorcentaje(int n){
+        porcentaje = n;
+    }
+    
+    public void setOcupado(boolean x){
+        enUso = x;
+    }
+    
+    public boolean getOcupado(){
+        return enUso;
+    }
+    
+    public double getVolumen(){
+        return volumen;
+    }
+    
+    public String getIde(){
+        return identificacion;
+    }
+    
+    @Override
+    public String toString(){
+        return "Identificacion tanque: "+identificacion + " Volumen: "+volumen+ " Valvulas abiertas"+valvUso;
     }
     
     
