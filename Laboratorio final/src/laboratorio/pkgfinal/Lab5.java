@@ -34,6 +34,7 @@ public class Lab5 extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +48,8 @@ public class Lab5 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel1.setText("Acueducto de Albear");
 
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,6 +60,10 @@ public class Lab5 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,7 +72,9 @@ public class Lab5 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(426, Short.MAX_VALUE))
+                .addGap(153, 153, 153)
+                .addComponent(jLabel2)
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         pack();
@@ -74,12 +83,22 @@ public class Lab5 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        if (jButton1.getText().equals(evt)) {
+        if (jButton1.getText().equals("Comenzar Simulacion")) 
+        {
+            jButton1.setText("Parar Simulacion");
+            timer=new Timer(1000,new actualizar());
+            timer.start();
+            
+            
+        }
+        else
+        {
+            jButton1.setText("Comenzar Simulacion");
+            timer.stop();
             
         }
         
-        timer=new Timer(1000,new actualizar());
-        timer.start();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
@@ -87,6 +106,7 @@ public class Lab5 extends javax.swing.JFrame {
     {
         public void actionPerformed(ActionEvent evt)
         {
+            jLabel2.setText("si se pudo");
             
             
             //codigo del timer
@@ -134,5 +154,6 @@ public class Lab5 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
