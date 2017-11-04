@@ -23,6 +23,7 @@ public class AgregarTanque extends javax.swing.JFrame {
     public static ArrayList<Region> regionAT= new ArrayList<Region>();
     public static ArrayList<Registro> registroAT = new ArrayList<Registro>();
     public static int diasAT;
+    public Conexion cc = new Conexion();
     
     public AgregarTanque() {
         initComponents();
@@ -234,7 +235,8 @@ public class AgregarTanque extends javax.swing.JFrame {
             
             Cilindro c=new Cilindro((double) jSpinner1.getValue(), (double) jSpinner2.getValue(), String.valueOf(idTAT), 100,  0,0,  false);
             c.volumen();
-            tanqueAT.add(c);            
+            tanqueAT.add(c);    
+            
         }
         
         if (jRadioButton2.isSelected()) 
@@ -251,7 +253,7 @@ public class AgregarTanque extends javax.swing.JFrame {
             Ortogonal o = new Ortogonal((double) jSpinner2.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(),String.valueOf(idTAT), 100, 0, 0, false);
             o.volumen();
             tanqueAT.add(o);
-            
+           
         }
         
         Lab5 l=new Lab5();
