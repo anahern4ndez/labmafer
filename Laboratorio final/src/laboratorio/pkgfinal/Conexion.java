@@ -8,7 +8,9 @@ import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.Query;
 import com.mongodb.MongoClient;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  * @author Maria Fernanda Lopez 17160
@@ -19,17 +21,74 @@ public class Conexion {
     private Datastore ds;
     
     
-    public void morphia(){
+    public Conexion(){
         MongoClient mongo = new MongoClient();
         Morphia morphia = new Morphia();
         morphia.map(Tanque.class).map(Registro.class).map(Region.class).map(Cilindro.class).map(Ortogonal.class).map(Cubico.class);
         ds = morphia.createDatastore(mongo, "Acueducto"); // Base Datos
     }   
     
-    public void addCilindro(){
-        Cilindro cilindro = new Cilindro(5, 10, "001", 100, 5, 201, true);
-        ds.save(cilindro);
+    public void addCilindro(ArrayList<Tanque> tanque){
+        for(int i = 0; i<tanque.size(); i++){
+            ds.save(tanque.get(i));
+        }
+        JOptionPane.showMessageDialog(null, "Si se guardo o no..");
     }
+    
+    public void addOrtogonal(double altura, double ancho, double largo,String identificacion){
+        Tanque orto = new Ortogonal(altura, ancho, largo, identificacion, 100, 0, 0, false);
+        orto.volumen();
+        ds.save(orto);
+        
+    }
+    
+    public void addCubo(double lado, String identificacion){
+        Tanque cubo = new Cubico(lado, identificacion, 100, 0,0, false);
+        cubo.volumen();
+        ds.save(cubo);
+       
+    }
+    
+    public Cubico[] mostrarCubos(){
+        Cubico[] arreglo = new Cubico[10];
+        Query<Cubico> query = ds.createQuery(Cubico.class); // todos los hoteles
+        
+        List<Cubico> todos = query.asList();
+        System.out.println("Todos los Hoteles");
+        for (Cubico miHotel: todos){
+            for(int i = 0; i<todos.size(); i++){
+                arreglo[i] = todos.get(i);
+            }
+        }
+        return arreglo;
+    }
+    
+    public void mostrarCilindro(){
+        Cilindro[] arreglo = new Cilindro[10];
+        Query<Cilindro> query = ds.createQuery(Cilindro.class); // todos los hoteles
+        
+        List<Cilindro> redondos = query.asList();
+        System.out.println("Todos los Hoteles");
+        for (Cilindro miHotel: redondos){
+            for(int i = 0; i<redondos.size(); i++){
+                arreglo[i] = redondos.get(i);
+            }
+        }
+    }
+    
+    public void mostrarOrto(){
+        Ortogonal[] arreglo = new Ortogonal[10];
+        Query<Ortogonal> query = ds.createQuery(Ortogonal.class); // todos los hoteles
+        
+        List<Ortogonal> ortos = query.asList();
+        System.out.println("Todos los Hoteles");
+        for (Ortogonal miHotel: ortos){
+            for(int i = 0; i<ortos.size(); i++){
+                arreglo[i] = ortos.get(i);
+            }
+        }
+    }
+    
     
     
 }
