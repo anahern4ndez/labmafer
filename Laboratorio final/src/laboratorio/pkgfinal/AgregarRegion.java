@@ -24,6 +24,7 @@ public class AgregarRegion extends javax.swing.JFrame {
     public static ArrayList<Region> regionAR= new ArrayList<Region>();
     public static ArrayList<Registro> registroAR = new ArrayList<Registro>();
     public static int diasAR;
+    public static String alertaAR;
     
     public AgregarRegion() {
         initComponents();
@@ -375,6 +376,7 @@ public class AgregarRegion extends javax.swing.JFrame {
             l.regionL=regionAR;
             l.registroL=registroAR;
             l.diasL=diasAR;
+            l.alertaL=alertaAR;
             
             l.setVisible(true);
             this.setVisible(false);
@@ -395,6 +397,7 @@ public class AgregarRegion extends javax.swing.JFrame {
         l.regionL=regionAR;
         l.registroL=registroAR;
         l.diasL=diasAR;
+        l.alertaL=alertaAR;
             
         l.setVisible(true);
         this.setVisible(false);

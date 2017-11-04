@@ -23,6 +23,7 @@ public class AgregarTanque extends javax.swing.JFrame {
     public static ArrayList<Region> regionAT= new ArrayList<Region>();
     public static ArrayList<Registro> registroAT = new ArrayList<Registro>();
     public static int diasAT;
+    public static String alertaAT;
     public Conexion cc = new Conexion();
     
     public AgregarTanque() {
@@ -263,6 +264,7 @@ public class AgregarTanque extends javax.swing.JFrame {
         l.regionL=regionAT;
         l.registroL=registroAT;
         l.diasL=diasAT;
+        l.alertaL=alertaAT;
         
         l.setVisible(true);
         this.setVisible(false);
@@ -353,6 +355,7 @@ public class AgregarTanque extends javax.swing.JFrame {
         l.regionL=regionAT;
         l.registroL=registroAT;
         l.diasL=diasAT;
+        l.alertaL=alertaAT;
         
         l.setVisible(true);
         this.setVisible(false);
