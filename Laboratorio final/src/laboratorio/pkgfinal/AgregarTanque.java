@@ -237,6 +237,7 @@ public class AgregarTanque extends javax.swing.JFrame {
             Cilindro c=new Cilindro((double) jSpinner1.getValue(), (double) jSpinner2.getValue(), String.valueOf(idTAT), 100,  0,0,  false);
             c.volumen();
             tanqueAT.add(c);    
+            cc.addCilindro(c);
             
         }
         
@@ -245,7 +246,8 @@ public class AgregarTanque extends javax.swing.JFrame {
             // es cubico 
             Cubico c= new Cubico((double) jSpinner3.getValue(), String.valueOf(idTAT), 100, 0, 0, false);
             c.volumen();
-            tanqueAT.add(c);            
+            tanqueAT.add(c);     
+            cc.addCubo(c);
         }
         
         if (jRadioButton3.isSelected()) 
@@ -254,6 +256,7 @@ public class AgregarTanque extends javax.swing.JFrame {
             Ortogonal o = new Ortogonal((double) jSpinner2.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(),String.valueOf(idTAT), 100, 0, 0, false);
             o.volumen();
             tanqueAT.add(o);
+            cc.addOrtogonal(o);
            
         }
         

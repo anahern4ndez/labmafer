@@ -28,23 +28,18 @@ public class Conexion {
         ds = morphia.createDatastore(mongo, "Acueducto"); // Base Datos
     }   
     
-    public void addCilindro(ArrayList<Tanque> tanque){
-        for(int i = 0; i<tanque.size(); i++){
-            ds.save(tanque.get(i));
-        }
-        JOptionPane.showMessageDialog(null, "Si se guardo o no..");
+    public void addCilindro(Cilindro cili){
+        ds.save(cili);
     }
     
-    public void addOrtogonal(double altura, double ancho, double largo,String identificacion){
-        Tanque orto = new Ortogonal(altura, ancho, largo, identificacion, 100, 0, 0, false);
-        orto.volumen();
+    public void addOrtogonal(Ortogonal orto){
+        
         ds.save(orto);
         
     }
     
-    public void addCubo(double lado, String identificacion){
-        Tanque cubo = new Cubico(lado, identificacion, 100, 0,0, false);
-        cubo.volumen();
+    public void addCubo(Cubico cubo){
+        
         ds.save(cubo);
        
     }
@@ -63,7 +58,7 @@ public class Conexion {
         return arreglo;
     }
     
-    public void mostrarCilindro(){
+    public Cilindro[] mostrarCilindro(){
         Cilindro[] arreglo = new Cilindro[10];
         Query<Cilindro> query = ds.createQuery(Cilindro.class); // todos los hoteles
         
@@ -74,9 +69,10 @@ public class Conexion {
                 arreglo[i] = redondos.get(i);
             }
         }
+        return arreglo;
     }
     
-    public void mostrarOrto(){
+    public Ortogonal[] mostrarOrto(){
         Ortogonal[] arreglo = new Ortogonal[10];
         Query<Ortogonal> query = ds.createQuery(Ortogonal.class); // todos los hoteles
         
@@ -87,6 +83,7 @@ public class Conexion {
                 arreglo[i] = ortos.get(i);
             }
         }
+        return arreglo;
     }
     
     
