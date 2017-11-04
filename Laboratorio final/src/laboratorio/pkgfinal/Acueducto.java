@@ -58,7 +58,7 @@ public class Acueducto
     }
     
     
-    public void simulacion(ArrayList<Region> region,ArrayList<Tanque> tanque,ArrayList<Registro> registro, int dia)
+    public void simulacion(ArrayList<Region> region,ArrayList<Tanque> tanque,ArrayList<Registro> registro, int dia, String alerta)
     {
         double necesidad;
         double agua;
@@ -73,14 +73,38 @@ public class Acueducto
             for(Tanque t: tanque)
             {//inicio t
                 
+                    
+                
+                
                 if (r.getIdentificacion().equals(t.getIde())) 
                 {
-                    if ((t.porcentaje<25)&&(t.porcentaje>20)) 
+                    if (t.porcentaje==100) 
                     {
-                        //Lab5 lab=new Lab5();
-                        JOptionPane.showMessageDialog(null, "El tanque "+t.getIde()+" tiene menos del 25% de su capacidad");
+                        t.setOcupado(true);
                         
                     }
+                    
+                    if (t.enUso) 
+                    {//inicio en uso
+                        
+                    
+                    
+                    if ((t.porcentaje<25)) 
+                    {
+                        // si el porcentaje de agua es menor a 25%
+                        alerta+="El tanque "+t.getIde()+" llego a menos del 25% de su capacidad "+"\n";
+                        
+                    }
+                    
+                    if ((t.porcentaje<10)&&(t.enUso==true)) 
+                    {
+                        alerta+="Se cerro automaticamente el tanque "+t.getIde()+"\n";
+                        t.setOcupado(false);
+                        System.out.println(t.getOcupado());
+                        
+                        break;                        
+                    }
+                    
                     
                     
                     t.setOcupado(true);
@@ -125,6 +149,8 @@ public class Acueducto
                 
                 
                 
+                }//fin en uso
+                
                 
                 
             }//fin t
@@ -136,6 +162,7 @@ public class Acueducto
         l.regionL=region;
         l.tanqueL=tanque;
         l.registroL=registro;
+        l.alertaL=alerta;
         
         
         

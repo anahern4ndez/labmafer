@@ -99,7 +99,7 @@ public class AgregarRegion extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("Nueva Region");
 
-        jLabel2.setText("Nombre de la Region 1:");
+        jLabel2.setText("Nombre del municipio 1:");
 
         jTextField1.setText("jTextField1");
 
@@ -107,7 +107,7 @@ public class AgregarRegion extends javax.swing.JFrame {
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(2.0d, 2.0d, null, 1.0d));
 
-        jLabel4.setText("Nombre de la Region 2:");
+        jLabel4.setText("Nombre del municipio 2:");
 
         jLabel5.setText("Promedio de poblacion: ");
 
@@ -115,7 +115,7 @@ public class AgregarRegion extends javax.swing.JFrame {
 
         jTextField2.setText("jTextField2");
 
-        jLabel6.setText("Nombre de la Region 3:");
+        jLabel6.setText("Nombre del municipio 3:");
 
         jTextField3.setText("jTextField3");
 
@@ -123,7 +123,7 @@ public class AgregarRegion extends javax.swing.JFrame {
 
         jLabel7.setText("Promedio de poblacion: ");
 
-        jLabel8.setText("Nombre de la Region 4:");
+        jLabel8.setText("Nombre del municipio 4:");
 
         jSpinner4.setModel(new javax.swing.SpinnerNumberModel(2.0d, 2.0d, null, 1.0d));
 
@@ -131,7 +131,7 @@ public class AgregarRegion extends javax.swing.JFrame {
 
         jTextField4.setText("jTextField4");
 
-        jLabel10.setText("Nombre de la Region 5:");
+        jLabel10.setText("Nombre del municipio 5:");
 
         jTextField5.setText("jTextField5");
 
@@ -145,9 +145,9 @@ public class AgregarRegion extends javax.swing.JFrame {
 
         jTextField6.setText("jTextField6");
 
-        jLabel13.setText("Nombre de la Region 6:");
+        jLabel13.setText("Nombre del municipio 6:");
 
-        jLabel14.setText("Nombre de la Region 7:");
+        jLabel14.setText("Nombre del municipio 7:");
 
         jTextField7.setText("jTextField7");
 
@@ -157,7 +157,7 @@ public class AgregarRegion extends javax.swing.JFrame {
 
         jSpinner8.setModel(new javax.swing.SpinnerNumberModel(2.0d, 2.0d, null, 1.0d));
 
-        jLabel16.setText("Nombre de la Region 8:");
+        jLabel16.setText("Nombre del municipio 8:");
 
         jLabel17.setText("Promedio de poblacion: ");
 
@@ -165,7 +165,7 @@ public class AgregarRegion extends javax.swing.JFrame {
 
         jTextField9.setText("jTextField9");
 
-        jLabel18.setText("Nombre de la Region 9:");
+        jLabel18.setText("Nombre del municipio 9:");
 
         jLabel19.setText("Promedio de poblacion: ");
 
@@ -175,7 +175,7 @@ public class AgregarRegion extends javax.swing.JFrame {
 
         jLabel20.setText("Promedio de poblacion: ");
 
-        jLabel21.setText("Nombre de la Region 9:");
+        jLabel21.setText("Nombre del municipio 10:");
 
         jTextField10.setText("jTextField10");
 
@@ -268,7 +268,7 @@ public class AgregarRegion extends javax.swing.JFrame {
                                     .addComponent(jSpinner5)
                                     .addComponent(jSpinner7)
                                     .addComponent(jSpinner9))))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton2)
