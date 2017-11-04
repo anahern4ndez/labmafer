@@ -42,6 +42,10 @@ public class Tanque {
     public void volumen(){
     
     }
+    public double getPorcentaje()
+    {
+        return porcentaje;
+    }
     
     public void setValvulas(int n){
         valvUso = n;
@@ -51,7 +55,7 @@ public class Tanque {
         return valvUso;
     }
     
-    public void setPorcentaje(int n){
+    public void setPorcentaje(double n){
         porcentaje = n;
     }
     
@@ -72,8 +76,21 @@ public class Tanque {
     }
     
     @Override
-    public String toString(){
-        return "Identificacion tanque: "+identificacion + " Volumen: "+volumen+ " Valvulas abiertas"+valvUso;
+    public String toString()
+    {
+        String x;
+        if (enUso==true) 
+        {
+            x="Estado: En uso";
+            
+            
+        }
+        else
+        {
+            x="Estado: Sin uso";
+        }
+        return "Identificacion tanque: "+identificacion +"\n" + " Volumen: "+volumen+"\n"+ " Valvulas abiertas: "+valvUso+"\n"+x
+                +"\n"+"Porcentaje de agua: "+porcentaje+"%";
     }
     
     

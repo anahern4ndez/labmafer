@@ -37,6 +37,7 @@ public class Region {
         munis[7] = m8;
         munis[8] = m9;
         munis[9] = m10;
+        
         prom[0] = p1;
         prom[1] = p2;
         prom[2] = p3; 
@@ -59,6 +60,27 @@ public class Region {
         }
         return promedio;
     }
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+    
+    public String toString()
+    {
+        String x="Nombre del municipio --- Promedio de Habitantes"+"\n";
+        
+        for (int i = 0; i < 10; i++) 
+        {
+            x+=munis[i]+" --- "+prom[i]+"\n";
+            
+        }
+        
+        
+        return x;
+    
+    }
+
+    
     
     
     
