@@ -40,7 +40,7 @@ public class Registro
         }
         else
         {
-            x="Se cerraron "+valvulas+" del tanque "+tanque+" el "+fecha;
+            x="Se cerraron "+valvulas+" valvula del tanque "+tanque+" el "+fecha;
         }
         
         

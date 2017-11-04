@@ -54,7 +54,8 @@ public class Region {
     public double getNecesidad(){
         double suma =0;
         double promedio = 0;
-        for(int i=0; i<prom.length; i++ ){
+        for(int i=0; i<prom.length; i++ )
+        {
             suma = suma + prom[i];
             promedio = suma/10;
         }

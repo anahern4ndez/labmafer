@@ -80,7 +80,7 @@ public class Acueducto
                     necesidad=r.getNecesidad()*(Math.random() * 3) + 1; 
                     
                     //sacamos el agua que hay actualmente y lo convertimos a litros
-                    agua=t.getVolumen()*t.getPorcentaje()*1000;
+                    agua=t.getVolumen()*(t.getPorcentaje()/100)*1000;
                     
                     //sacamos los litros que quedan luego de sacar los necesitados por la region
                     resultado=agua-necesidad;
@@ -90,13 +90,14 @@ public class Acueducto
                     
                     //actualizamos el porcentaje del tanque
                     t.setPorcentaje(porcentajeFinal);
-                    
+                    System.out.println(porcentajeFinal);
                     //recojemos las valvulas que estan abiertas hasta el momento
                     valvulasactuales=t.getValvulas();
                     
                     //calculamos cuantas valvulas hay que abrir
                     //redondeamos el resultado y lo convertimos en int
                     valvulasnuevas=(int) Math.ceil((t.getPorcentaje()*10)/100);
+                    
                     
                     //actualizamos las valvulas abiertas
                     t.setValvulas(valvulasnuevas);
