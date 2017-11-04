@@ -6,6 +6,7 @@
 package laboratorio.pkgfinal;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,6 +75,14 @@ public class Acueducto
                 
                 if (r.getIdentificacion().equals(t.getIde())) 
                 {
+                    if ((t.porcentaje<25)&&(t.porcentaje>20)) 
+                    {
+                        //Lab5 lab=new Lab5();
+                        JOptionPane.showMessageDialog(null, "El tanque "+t.getIde()+" tiene menos del 25% de su capacidad");
+                        
+                    }
+                    
+                    
                     t.setOcupado(true);
                     
                     //sacamos la necesidad de la region y la multiplicamos por un Rnd para simular
