@@ -6,25 +6,95 @@
 package laboratorio.pkgfinal;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author jose
  */
-public class Acueducto 
-{
+public class Acueducto {
+    private ArrayList<Tanque> tanques;
+    private ArrayList<Region> region;
+    private Conexion cc;
 
-    public Acueducto() 
-    {
+    public Acueducto(){
+        tanques = new ArrayList<Tanque>();
+        region = new ArrayList<Region>();
+        cc = new Conexion();
     }
     
+   public void addCilindro(Cilindro c){
+       tanques.add(c);
+   }
+   
+   public void addOrtogonal(Ortogonal c){
+       tanques.add(c);
+   }
+   
+   public void addCubo(Cubico c){
+       tanques.add(c);
+   }
+   
+   public ArrayList<Tanque> getList(){
+       return tanques;
+   }
+   
+   public void addRegion(Region r){
+       region.add(r);
+   }
+   
+   public ArrayList<Region> getRegion(){
+       return region;
+   }
+   
+   /**
+    * metodo para verificar si el tanque que se desea crear ya existe o no
+    * @param identificacion
+    * @return 
+    */
+   public boolean repeticionTanques(String identificacion){
+       List<Tanque> guardados = new ArrayList<Tanque>();
+       guardados = cc.mostrarGuardados();
+       Iterator<Tanque> it = guardados.iterator();
+       while(it.hasNext()){
+           Tanque tanque = it.next();
+           if(tanque.getIde().equals(identificacion)){
+               return false;
+           }
+       }
+       return true;
+   }
+   
+   /**
+    * metodo para verificar si la region que se desea ingresar ya existe o no
+    * @param identificacion
+    * @return 
+    */
+   public boolean repeticionRegion(String identificacion){
+       List<Region> todos = cc.mostrarRegiones();
+       Iterator<Region> it = todos.iterator();
+       while(it.hasNext()){
+           Region region = it.next();
+           if(region.getIdentificacion().equals(tanques)){
+               return false;
+           }
+       }
+       
+       return true;
+               
+   }
+   
+  
+   
+   
     
     
-    public String infoTanque(ArrayList<Tanque> tanque, String id)
+    public String infoTanque(String id)
     {
         String mensaje="";
-        
+        List<Tanque> tanque = cc.mostrarGuardados();
         for(Tanque i:tanque)
         {
             if (id.equals(i.getIde())) 
@@ -36,13 +106,30 @@ public class Acueducto
         }
         
         
-        return mensaje;    
+        return mensaje;  
     }
     
-    public String infoRegion(ArrayList<Region> region, String id)
+    public double volumenRegion(String id){
+        double mensaje=0;
+        List<Tanque> tanque = cc.mostrarGuardados();
+        for(Tanque i:tanque)
+        {
+            if (id.equals(i.getIde())) 
+            {
+                mensaje= i.getVolumen();
+                
+            }
+        
+        }
+        
+        
+        return mensaje; 
+        
+    }
+    public String infoRegion(String id)
     {
         String mensaje="";
-        
+        List<Region> region = cc.mostrarRegiones();
         for(Region i:region)
         {
             if (id.equals(i.getIdentificacion())) 
@@ -58,7 +145,7 @@ public class Acueducto
     }
     
     
-    public void simulacion(ArrayList<Region> region,ArrayList<Tanque> tanque,ArrayList<Registro> registro, int dia, String alerta)
+    public void simulacion(List<Region> region, List<Tanque> tanque,ArrayList<Registro> registro, int dia, String alerta)
     {
         double necesidad;
         double agua;
@@ -158,11 +245,8 @@ public class Acueducto
         
         }//fin r
         
-        Lab5 l=new Lab5();
-        l.regionL=region;
-        l.tanqueL=tanque;
-        l.registroL=registro;
-        l.alertaL=alerta;
+        
+      
         
         
         
@@ -171,6 +255,8 @@ public class Acueducto
     
     }
     
+    public void revisarIde(String ide){
+        
+    }
     
-    
-}
+   }

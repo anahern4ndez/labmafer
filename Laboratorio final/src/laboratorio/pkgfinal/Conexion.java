@@ -146,5 +146,16 @@ public class Conexion {
         
     }
     
+    /**
+     * Metodo que sirve para recuperar todos los datos de las regiones guardadas 
+     * @return lista de regiones
+     */
+    public List<Region> mostrarRegiones(){
+        List<Region> todos = new ArrayList<Region>();
+        Query<Region> query = ds.createQuery(Region.class);
+        todos = query.asList();
+        return todos;
+    }
+    
     
 }

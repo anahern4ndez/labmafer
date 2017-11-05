@@ -21,24 +21,23 @@ import org.mongodb.morphia.Morphia;
  */
 public class Lab5 extends javax.swing.JFrame {
     
-    /**
-     * Creates new form Lab5
-     */
-    public  ArrayList<Tanque> tanqueL = new ArrayList<Tanque>();
+       
     public  int idTL;
     public  int idRL;
-    public ArrayList<Region> regionL= new ArrayList<Region>();
+   
     public  ArrayList<Registro> registroL = new ArrayList<Registro>();
     public int diasL;
     public String alertaL;
-    public Conexion cc;
-    
+    private Conexion cc;
+    private String tipo = "";
+    private Acueducto acueducto;
     
     private Timer timer;
     
     
     public Lab5() {
         initComponents();
+        acueducto = new Acueducto();
         cc = new Conexion();
         timer=new Timer(100,new actualizar());
     }
@@ -72,9 +71,10 @@ public class Lab5 extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel47 = new javax.swing.JLabel();
+        volumen = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jSpinner4 = new javax.swing.JSpinner();
@@ -97,7 +97,7 @@ public class Lab5 extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        ide = new javax.swing.JTextField();
+        identi = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -143,6 +143,19 @@ public class Lab5 extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         ide2 = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel48 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -320,40 +333,51 @@ public class Lab5 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("PRUEBA PARA VER SI SE GUARDAN Y VUELVEN A APARECER"));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Metros de Regiones"));
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
-
-        jButton4.setText("Probar");
+        jButton4.setText("Ver");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
+        jLabel47.setText("Metros cubicos de la región:");
+
+        volumen.setEnabled(false);
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5)
-                .addContainerGap())
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel47)
+                        .addGap(27, 27, 27)
+                        .addComponent(volumen, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton4)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addGap(145, 145, 145))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5)
-                .addGap(18, 18, 18)
+                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel47)
+                    .addComponent(volumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addComponent(jButton4)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar un tanque"));
@@ -402,6 +426,11 @@ public class Lab5 extends javax.swing.JFrame {
                 jRadioButton1StateChanged(evt);
             }
         });
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, null, 1.0d));
 
@@ -409,6 +438,11 @@ public class Lab5 extends javax.swing.JFrame {
         jRadioButton2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jRadioButton2StateChanged(evt);
+            }
+        });
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
             }
         });
 
@@ -420,14 +454,19 @@ public class Lab5 extends javax.swing.JFrame {
                 jRadioButton3StateChanged(evt);
             }
         });
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel14.setText("Ingrese el ancho del tanque:");
 
         jLabel1.setText("Identificacion del tanque:");
 
-        ide.addActionListener(new java.awt.event.ActionListener() {
+        identi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ideActionPerformed(evt);
+                identiActionPerformed(evt);
             }
         });
 
@@ -441,7 +480,7 @@ public class Lab5 extends javax.swing.JFrame {
                         .addGap(65, 65, 65)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(ide))
+                        .addComponent(identi))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jRadioButton1)
@@ -492,7 +531,7 @@ public class Lab5 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(identi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(250, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
@@ -625,6 +664,26 @@ public class Lab5 extends javax.swing.JFrame {
             }
         });
 
+        jLabel37.setText("Valvula No.2");
+
+        jLabel38.setText("Valvula No.3");
+
+        jLabel39.setText("Valvula No.1");
+
+        jLabel40.setText("Valvula No.4");
+
+        jLabel41.setText("Valvula No.6");
+
+        jLabel42.setText("Valvula No.5");
+
+        jLabel43.setText("Valvula No.7");
+
+        jLabel44.setText("Valvula No.8");
+
+        jLabel45.setText("Valvula No.9");
+
+        jLabel46.setText("Valvula No.10");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -640,6 +699,19 @@ public class Lab5 extends javax.swing.JFrame {
                         .addGap(110, 110, 110)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel42)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel44)
+                    .addComponent(jLabel45)
+                    .addComponent(jLabel46))
+                .addGap(83, 83, 83))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addContainerGap()
@@ -719,7 +791,27 @@ public class Lab5 extends javax.swing.JFrame {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(443, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel39)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel37)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel38)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel40)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel42)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel41)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel43)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel44)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel45)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(ide2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -793,6 +885,36 @@ public class Lab5 extends javax.swing.JFrame {
                     .addContainerGap(77, Short.MAX_VALUE)))
         );
 
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Valvulas abiertas"));
+
+        jLabel48.setText("Valvulas abiertas de tanque cilindricos:");
+
+        jTextField11.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel48))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -804,7 +926,7 @@ public class Lab5 extends javax.swing.JFrame {
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -813,8 +935,9 @@ public class Lab5 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(960, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(978, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -825,19 +948,23 @@ public class Lab5 extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 54, Short.MAX_VALUE))
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
 
         pack();
@@ -866,87 +993,102 @@ public class Lab5 extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // cuando se abre la pantalla
-        
+         List<Tanque> prueba = cc.mostrarGuardados();
+              String idens = "";
+              for(Tanque i: prueba)
+                {
+                jComboBox1.addItem(i.getIde());
+                }
+       List<Region> regiones = cc.mostrarRegiones();
+       String idens1 = "";
+       for(Region region: regiones){
+           jComboBox2.addItem(region.getIdentificacion());
+           jComboBox3.addItem(region.getIdentificacion());
+       }
         
         
     }//GEN-LAST:event_formWindowOpened
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         // si cambia de estado
-        Acueducto a = new Acueducto();
+       String ide = String.valueOf(jComboBox2.getSelectedItem());
+       jTextArea1.setText(acueducto.infoTanque(ide));
         
-        jTextArea1.setText(a.infoTanque(tanqueL,(String) jComboBox1.getSelectedItem()));
         
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
         // si cambia de estado
-        Acueducto a = new Acueducto();
-        
-        jTextArea2.setText(a.infoRegion(regionL,(String) jComboBox2.getSelectedItem()));
-        
+        String ide = String.valueOf(jComboBox2.getSelectedItem());
+       jTextArea2.setText(acueducto.infoRegion(ide));
+            
         
         
     }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        List<Tanque> prueba = cc.mostrarGuardados();
-        for(Tanque misTanque: prueba){
-            jTextArea5.setText(misTanque.toString());
-        }
+        double volumen1 = acueducto.volumenRegion(String.valueOf(jComboBox3.getSelectedItem()));
+        volumen.setText(String.valueOf(volumen1));
+        
         
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // boton aceptar
-       
-        if (jRadioButton1.isSelected())
-        {
-            //es cilindrico
-
-            Cilindro c=new Cilindro((double) jSpinner1.getValue(), (double) jSpinner2.getValue(), ide.getText(), 100,  0,0,  false);
-            c.volumen();
-            tanqueL.add(c);
-            cc.addCilindro(c);
-            JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
-            
-
-        }
-
-        if (jRadioButton2.isSelected())
-        {
-            // es cubico
-            Cubico c= new Cubico((double) jSpinner3.getValue(), ide.getText(), 100, 0, 0, false);
-            c.volumen();
-           tanqueL.add(c);
-            cc.addCubo(c);
-            JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
-        }
-
-        if (jRadioButton3.isSelected())
-        {
-            // es ortogonal
-            Ortogonal o = new Ortogonal((double) jSpinner2.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(), ide.getText(), 100, 0, 0, false);
-            o.volumen();
-            tanqueL.add(o);
-            cc.addOrtogonal(o);
-            JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
-
-        }
-        
-        
-        for(Tanque i:tanqueL)
-        {
+        String ide = identi.getText();
+        boolean ver = acueducto.repeticionTanques(ide);
+      if(ver==true){
+      try{
+          if(tipo.equals("Cilindro")){
+                           
+              Cilindro cilindro = new Cilindro((double) jSpinner1.getValue(), (double) jSpinner2.getValue(), identi.getText(), 100,  0,0,  false);
+              cilindro.volumen();
+              cc.addCilindro(cilindro);
+              acueducto.addCilindro(cilindro);
+              identi.setText("");
+              JOptionPane.showMessageDialog(null, "Tanque ingresado con exito");
+               for(Tanque i:acueducto.getList())
+            {
             jComboBox1.addItem(i.getIde());
+            }
+              
+          }else if(tipo.equals("Cubico")){
+              
+              Cubico cubo = new Cubico((double) jSpinner3.getValue(), identi.getText(), 100, 0, 0, false);
+              cubo.volumen();
+              cc.addCubo(cubo);
+              acueducto.addCubo(cubo);
+              identi.setText("");
+              JOptionPane.showMessageDialog(null, "Tanque ingresado con exito");
+              for(Tanque i:acueducto.getList())
+            {
+            jComboBox1.addItem(i.getIde());
+            }
+          }else if (tipo.equals("Ortogonal")){
+              
+              Ortogonal orto = new Ortogonal((double) jSpinner2.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(), identi.getText(), 100, 0, 0, false);
+              orto.volumen();
+              cc.addOrtogonal(orto);
+              acueducto.addOrtogonal(orto);
+              identi.setText("");
+              JOptionPane.showMessageDialog(null, "Tanque ingresado con exito");
+              for(Tanque i:acueducto.getList())
+            {
+            jComboBox1.addItem(i.getIde());
+            }
+          }
+      }catch(Exception e){
+          JOptionPane.showMessageDialog(null, "Por favor ingrese datos validos");
+          identi.setText("");
+      }
+        }else{
+            JOptionPane.showMessageDialog(null, "El tanque ya esta ingresado");
         }
-        
-        for(Region x:regionL)
-        {
-            jComboBox2.addItem(x.getIdentificacion());
-        }
-        
+       
+         
+       
 
         
 
@@ -1018,12 +1160,17 @@ public class Lab5 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jRadioButton3StateChanged
 
-    private void ideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ideActionPerformed
+    private void identiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ideActionPerformed
+    }//GEN-LAST:event_identiActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // boton aceptar
+        String identi = ide2.getText();
+        boolean ver1 = acueducto.repeticionRegion(identi);
+        boolean ver2 = acueducto.repeticionTanques(identi);
+        if(ver1==true && ver2==false){
+        try{
         if ((jTextField1.getText().equals("")) || (jTextField2.getText().equals("")) || (jTextField3.getText().equals("")) || (jTextField4.getText().equals("")) || (jTextField5.getText().equals("")) || (jTextField6.getText().equals("")) || (jTextField7.getText().equals("")) || (jTextField8.getText().equals("")) || (jTextField9.getText().equals("")) || (jTextField10.getText().equals(""))                 )
         {// hay campos sin llenar
 
@@ -1034,18 +1181,26 @@ public class Lab5 extends javax.swing.JFrame {
         {// no hay campos vacios
 
             
+            
             Region r= new Region(ide2.getText(), jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(), jTextField7.getText(), jTextField8.getText(), jTextField9.getText(), jTextField10.getText(), (double) jSpinner1.getValue(), (double) jSpinner2.getValue(), (double) jSpinner3.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(), (double) jSpinner6.getValue(), (double) jSpinner7.getValue(), (double) jSpinner8.getValue(), (double) jSpinner9.getValue(), (double) jSpinner10.getValue());
             cc.addRegion(r);
-            regionL.add(r);
+            acueducto.addRegion(r);
             JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
-         
+                               
 
-            
-
+        } 
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Por favor ingrese datos validos");
+        
         }
-        for(Region x:regionL)
+        }else{
+            JOptionPane.showMessageDialog(null, "El tanque no existe o la region ya ha sido guardada");
+        }
+        for(Region x:cc.mostrarRegiones())
         {
             jComboBox2.addItem(x.getIdentificacion());
+            jComboBox3.addItem(x.getIdentificacion());
+            
         }
 
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -1066,16 +1221,31 @@ public class Lab5 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        tipo = "Cilindro";
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        tipo = "Cubico";
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+        tipo = "Ortogonal";
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
     
     public class actualizar implements ActionListener
     {
         public void actionPerformed(ActionEvent evt)
         {                  
-            Acueducto a=new Acueducto();
+            
             //codigo del timer
             diasL++;
             jLabel4.setText("Dias transucurridos en la simulacion: "+diasL);
-            a.simulacion(regionL,tanqueL,registroL,diasL,alertaL);
+            acueducto.simulacion(cc.mostrarRegiones(),cc.mostrarGuardados(),registroL,diasL,alertaL);
             
             String concatenar="";
             for(Registro i:registroL)
@@ -1130,8 +1300,8 @@ public class Lab5 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ide;
     private javax.swing.JTextField ide2;
+    private javax.swing.JTextField identi;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1139,6 +1309,7 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1169,7 +1340,19 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1183,6 +1366,7 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
@@ -1190,7 +1374,6 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner10;
     private javax.swing.JSpinner jSpinner11;
@@ -1210,9 +1393,9 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -1221,5 +1404,6 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField volumen;
     // End of variables declaration//GEN-END:variables
 }
