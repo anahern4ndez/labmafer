@@ -12,9 +12,11 @@ import org.bson.types.ObjectId;
 public class Ortogonal extends Tanque
 {
      //Atributos 
-    protected double altura;
-    protected double ancho;
-    protected double largo;
+    private double altura;
+    private double ancho;
+    private double largo;
+    
+    public Ortogonal(){}
 
     public Ortogonal(double altura, double ancho, double largo,String identificacion, double porcentaje, int valvUso, double volumen, boolean enUso) 
     {

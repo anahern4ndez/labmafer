@@ -14,12 +14,18 @@ import org.bson.types.ObjectId;
 public class Cubico extends Tanque
 {
      //Atributos 
-    protected double lado;
+    private double lado;
+    
+    public Cubico(){}
 
+    
+    
     public Cubico(double lado, String identificacion, double porcentaje, int valvUso, double volumen, boolean enUso) {
         super(identificacion, porcentaje, valvUso, volumen, enUso);
         this.lado = lado;
     }
+    
+    
     
     public void volumen()
     {

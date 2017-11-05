@@ -15,6 +15,8 @@ public class Cilindro extends Tanque
     //Atributos 
     protected double radio;
     protected double altura;
+    
+    public Cilindro(){}
 
     public Cilindro(double radio, double altura, String identificacion, double porcentaje, int valvUso, double volumen, boolean enUso) {
         super(identificacion, porcentaje, valvUso, volumen, enUso);
@@ -22,6 +24,7 @@ public class Cilindro extends Tanque
         this.altura = altura;
     }
     
+    @Override
     public void volumen()
     {
         volumen=Math.PI*(radio*radio)*altura;
