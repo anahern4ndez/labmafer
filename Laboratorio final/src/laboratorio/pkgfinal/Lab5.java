@@ -23,19 +23,19 @@ public class Lab5 extends javax.swing.JFrame {
     /**
      * Creates new form Lab5
      */
-    public static ArrayList<Tanque> tanqueL = new ArrayList<Tanque>();
-    public static int idTL;
-    public static int idRL;
-    public static ArrayList<Region> regionL= new ArrayList<Region>();
-    public static ArrayList<Registro> registroL = new ArrayList<Registro>();
-    public static int diasL;
-    public static String alertaL;
+    public  ArrayList<Tanque> tanqueL = new ArrayList<Tanque>();
+    public  int idTL;
+    public  int idRL;
+    public ArrayList<Region> regionL= new ArrayList<Region>();
+    public  ArrayList<Registro> registroL = new ArrayList<Registro>();
+    public int diasL;
+    public String alertaL;
     public Conexion cc;
     
     
     private Timer timer;
     
-    private Datastore ds;
+    
     public Lab5() {
         initComponents();
         cc = new Conexion();
@@ -865,18 +865,7 @@ public class Lab5 extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // cuando se abre la pantalla
-        jComboBox1.removeAllItems();
-        jComboBox2.removeAllItems();
-        jLabel4.setText("");
-        for(Tanque i:tanqueL)
-        {
-            jComboBox1.addItem(i.getIde());
-        }
         
-        for(Region x:regionL)
-        {
-            jComboBox2.addItem(x.getIdentificacion());
-        }
         
         
     }//GEN-LAST:event_formWindowOpened
@@ -923,9 +912,10 @@ public class Lab5 extends javax.swing.JFrame {
 
             Cilindro c=new Cilindro((double) jSpinner1.getValue(), (double) jSpinner2.getValue(), ide.getText(), 100,  0,0,  false);
             c.volumen();
-            
+            tanqueL.add(c);
             cc.addCilindro(c);
             JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
+            
 
         }
 
@@ -934,7 +924,7 @@ public class Lab5 extends javax.swing.JFrame {
             // es cubico
             Cubico c= new Cubico((double) jSpinner3.getValue(), ide.getText(), 100, 0, 0, false);
             c.volumen();
-           
+           tanqueL.add(c);
             cc.addCubo(c);
             JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
         }
@@ -944,12 +934,22 @@ public class Lab5 extends javax.swing.JFrame {
             // es ortogonal
             Ortogonal o = new Ortogonal((double) jSpinner2.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(), ide.getText(), 100, 0, 0, false);
             o.volumen();
-            
+            tanqueL.add(o);
             cc.addOrtogonal(o);
             JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
 
         }
-
+        
+        
+        for(Tanque i:tanqueL)
+        {
+            jComboBox1.addItem(i.getIde());
+        }
+        
+        for(Region x:regionL)
+        {
+            jComboBox2.addItem(x.getIdentificacion());
+        }
         
 
         
@@ -1042,10 +1042,15 @@ public class Lab5 extends javax.swing.JFrame {
             cc.addRegion(r);
             JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
 
-            
+              
+        
 
             
 
+        }
+        for(Region x:regionL)
+        {
+            jComboBox2.addItem(x.getIdentificacion());
         }
 
     }//GEN-LAST:event_jButton5ActionPerformed
