@@ -18,7 +18,15 @@ public class Registro
     
     //private Date myDate = new Date();
     //String fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
-
+    public Registro(){}
+    
+    /**
+     * Constructor for objects of class Registro
+     * @param valvulas
+     * @param fecha
+     * @param abierto
+     * @param tanque 
+     */
     public Registro(int valvulas, String fecha, boolean abierto, String tanque) {
         this.valvulas = valvulas;
         this.fecha = fecha;

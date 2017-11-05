@@ -23,6 +23,30 @@ public class Region {
     
     public Region(){}
     
+    /**
+     * Constructor for objects of class Region
+     * @param identificacion
+     * @param m1
+     * @param m2
+     * @param m3
+     * @param m4
+     * @param m5
+     * @param m6
+     * @param m7
+     * @param m8
+     * @param m9
+     * @param m10
+     * @param p1
+     * @param p2
+     * @param p3
+     * @param p4
+     * @param p5
+     * @param p6
+     * @param p7
+     * @param p8
+     * @param p9
+     * @param p10 
+     */
     public Region(String identificacion, String m1, String m2, String m3, String m4, String m5, String m6, String m7, String m8, String m9, String m10, double p1, double p2, double p3, double p4, double p5, double p6, double p7, double p8, double p9, double p10){
         this.identificacion=identificacion;
         munis = new String[10];
@@ -66,6 +90,7 @@ public class Region {
         return identificacion;
     }
     
+    @Override
     public String toString()
     {
         String x="Nombre del municipio --- Promedio de Habitantes"+"\n";

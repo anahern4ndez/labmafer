@@ -9,6 +9,7 @@ import com.mongodb.MongoClient;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import org.mongodb.morphia.Datastore;
@@ -890,16 +891,11 @@ public class Lab5 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Ortogonal[] prubea = new Ortogonal[10];
-        prubea = cc.mostrarOrto();
-        for(int i =0; i<prubea.length; i++){
-            jTextArea5.setText(prubea[i].toString());
+        List<Tanque> prueba = cc.mostrarGuardados();
+        for(Tanque misTanque: prueba){
+            jTextArea5.setText(misTanque.toString());
         }
-        Cubico[] cubos = new Cubico[15];
-        cubos = cc.mostrarCubos();
-        for(int i=0; i<cubos.length; i++){
-            jTextArea5.setText(cubos[i].toString());
-        }
+        
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1040,10 +1036,9 @@ public class Lab5 extends javax.swing.JFrame {
             
             Region r= new Region(ide2.getText(), jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(), jTextField7.getText(), jTextField8.getText(), jTextField9.getText(), jTextField10.getText(), (double) jSpinner1.getValue(), (double) jSpinner2.getValue(), (double) jSpinner3.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(), (double) jSpinner6.getValue(), (double) jSpinner7.getValue(), (double) jSpinner8.getValue(), (double) jSpinner9.getValue(), (double) jSpinner10.getValue());
             cc.addRegion(r);
+            regionL.add(r);
             JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
-
-              
-        
+         
 
             
 

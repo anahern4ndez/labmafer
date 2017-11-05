@@ -27,6 +27,14 @@ public class Tanque {
     
     public Tanque (){}
     
+    /**
+     * Constructor for objects of class Tanque
+     * @param identificacion
+     * @param porcentaje
+     * @param valvUso
+     * @param volumen
+     * @param enUso 
+     */
     public Tanque (String identificacion, double porcentaje, int valvUso, double volumen, boolean enUso){
         this.identificacion=identificacion;
         this.porcentaje=porcentaje;

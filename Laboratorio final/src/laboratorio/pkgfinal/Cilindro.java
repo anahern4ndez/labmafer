@@ -13,11 +13,21 @@ import org.bson.types.ObjectId;
 public class Cilindro extends Tanque
 {
     //Atributos 
-    protected double radio;
-    protected double altura;
+    private double radio;
+    private double altura;
     
     public Cilindro(){}
 
+    /**
+     * Constructor for objects of class Cilindro
+     * @param radio
+     * @param altura
+     * @param identificacion
+     * @param porcentaje
+     * @param valvUso
+     * @param volumen
+     * @param enUso 
+     */
     public Cilindro(double radio, double altura, String identificacion, double porcentaje, int valvUso, double volumen, boolean enUso) {
         super(identificacion, porcentaje, valvUso, volumen, enUso);
         this.radio = radio;

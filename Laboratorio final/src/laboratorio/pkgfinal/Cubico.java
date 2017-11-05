@@ -19,7 +19,15 @@ public class Cubico extends Tanque
     public Cubico(){}
 
     
-    
+    /**
+     * Constructor for objects of class Cubico
+     * @param lado
+     * @param identificacion
+     * @param porcentaje
+     * @param valvUso
+     * @param volumen
+     * @param enUso 
+     */
     public Cubico(double lado, String identificacion, double porcentaje, int valvUso, double volumen, boolean enUso) {
         super(identificacion, porcentaje, valvUso, volumen, enUso);
         this.lado = lado;
@@ -27,6 +35,7 @@ public class Cubico extends Tanque
     
     
     
+    @Override
     public void volumen()
     {
         volumen=lado*lado*lado;

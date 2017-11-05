@@ -18,6 +18,17 @@ public class Ortogonal extends Tanque
     
     public Ortogonal(){}
 
+    /**
+     * Constructor for objects of class Ortogonal
+     * @param altura
+     * @param ancho
+     * @param largo
+     * @param identificacion
+     * @param porcentaje
+     * @param valvUso
+     * @param volumen
+     * @param enUso 
+     */
     public Ortogonal(double altura, double ancho, double largo,String identificacion, double porcentaje, int valvUso, double volumen, boolean enUso) 
     {
         super(identificacion,porcentaje,valvUso,volumen,enUso);
@@ -26,6 +37,7 @@ public class Ortogonal extends Tanque
         this.largo = largo;
     }
     
+    @Override
     public void volumen()
     {
         volumen=altura*ancho*largo;

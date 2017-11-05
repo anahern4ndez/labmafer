@@ -20,7 +20,9 @@ import javax.swing.JOptionPane;
 public class Conexion {
     private Datastore ds;
     
-    
+    /**
+     *Constructor for objects of class Conexion
+     */
     public Conexion(){
         MongoClient mongo = new MongoClient();
         Morphia morphia = new Morphia();
@@ -28,24 +30,46 @@ public class Conexion {
         ds = morphia.createDatastore(mongo, "Acueducto"); // Base Datos
     }   
     
+    /**
+     * Metodo para agregar un cilindro a la base de datos
+     * @param cili 
+     */
     public void addCilindro(Cilindro cili){
         ds.save(cili);
     }
     
+    /**
+     * metodo para agregar un tanque ortogonal a la base de datos
+     * @param orto 
+     */
     public void addOrtogonal(Ortogonal orto){
         
         ds.save(orto);
         
     }
     
+    /**
+     * metodo para agregar un tanque cubico a la base de datos
+     * @param cubo 
+     */
     public void addCubo(Cubico cubo){
         
         ds.save(cubo);
        
     }
+    
+    /**
+     * metodo para agregar una region a la base de datos
+     * @param r 
+     */
     public void addRegion(Region r){
         ds.save(r);
     }
+    
+    /**
+     * metodo para devolver todos los cubos guardados
+     * @return lista de guardados
+     */
     public Cubico[] mostrarCubos(){
         Cubico[] arreglo = new Cubico[10];
         Query<Cubico> query = ds.createQuery(Cubico.class); // todos los hoteles
@@ -60,6 +84,10 @@ public class Conexion {
         return arreglo;
     }
     
+    /**
+     * metodo para devolver todos los cilindro guardados
+     * @return lista de guardados
+     */
     public Cilindro[] mostrarCilindro(){
         Cilindro[] arreglo = new Cilindro[10];
         Query<Cilindro> query = ds.createQuery(Cilindro.class); // todos los hoteles
@@ -74,6 +102,10 @@ public class Conexion {
         return arreglo;
     }
     
+    /**
+     * metodo para devolver todos los ortogonales guardados
+     * @return lista de guardados
+     */
     public Ortogonal[] mostrarOrto(){
         Ortogonal[] arreglo = new Ortogonal[10];
         Query<Ortogonal> query = ds.createQuery(Ortogonal.class); // todos los hoteles
@@ -88,6 +120,31 @@ public class Conexion {
         return arreglo;
     }
     
+    /**
+     * metodo que si sirve y devulve una lista polimorfica de los tanque guardados
+     * @return tanques guardados
+     */
+    public List<Tanque> mostrarGuardados(){
+        List<Tanque> Todos = new ArrayList<Tanque>();
+        Query<Cubico> query = ds.createQuery(Cubico.class);
+        List<Cubico> cubos = query.asList();
+        for(Cubico misCubos: cubos){
+            Todos.add(misCubos);
+        }
+        Query<Cilindro> query2 = ds.createQuery(Cilindro.class);
+        List<Cilindro> cilindros = query2.asList();
+        for(Cilindro misCilindros: cilindros){
+            Todos.add(misCilindros);
+        }
+        Query<Ortogonal> query3 = ds.createQuery(Ortogonal.class);
+        List<Ortogonal> ortos = query3.asList();
+        for(Ortogonal misOrtos: ortos){
+            Todos.add(misOrtos);
+        }
+        
+        return Todos;
+        
+    }
     
     
 }
