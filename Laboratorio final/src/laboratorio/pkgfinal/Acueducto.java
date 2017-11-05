@@ -187,7 +187,7 @@ public class Acueducto {
                     {
                         alerta+="Se cerro automaticamente el tanque "+t.getIde()+"\n";
                         t.setOcupado(false);
-                        System.out.println(t.getOcupado());
+                        System.out.println("Ocupado"+t.getOcupado());
                         
                         break;                        
                     }
@@ -210,7 +210,7 @@ public class Acueducto {
                     
                     //actualizamos el porcentaje del tanque
                     t.setPorcentaje(porcentajeFinal);
-                    System.out.println(porcentajeFinal);
+                    System.out.println("Porcentaje final"+porcentajeFinal);
                     //recojemos las valvulas que estan abiertas hasta el momento
                     valvulasactuales=t.getValvulas();
                     
