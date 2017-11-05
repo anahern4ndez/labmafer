@@ -43,7 +43,9 @@ public class Conexion {
         ds.save(cubo);
        
     }
-    
+    public void addRegion(Region r){
+        ds.save(r);
+    }
     public Cubico[] mostrarCubos(){
         Cubico[] arreglo = new Cubico[10];
         Query<Cubico> query = ds.createQuery(Cubico.class); // todos los hoteles
