@@ -267,16 +267,17 @@ public class Acueducto {
                     
                     //actualizamos el porcentaje del tanque
                     t.setPorcentaje(porcentajeFinal);
-                    cc.updatePorcentaje(porcentajeFinal);
+                    cc.updatePorcentaje(porcentajeFinal,t.getIde());
+                    Lab5.porcentajeFinal2=porcentajeFinal;
                     
-                    System.out.println("Porcentaje final"+porcentajeFinal);
+                    System.out.println("Porcentaje final"+t.identificacion+" ---"+porcentajeFinal);
                     //recojemos las valvulas que estan abiertas hasta el momento
                     valvulasactuales=t.getValvulas();
                     
                     //calculamos cuantas valvulas hay que abrir
                     //redondeamos el resultado y lo convertimos en int
-                    valvulasnuevas=(int) Math.ceil((t.getPorcentaje()*10)/100);
-                    
+                    //valvulasnuevas=(int) Math.ceil((t.getPorcentaje()*10)/100);
+                    valvulasnuevas=(int) Math.ceil((porcentajeFinal*10)/100);
                     
                     //actualizamos las valvulas abiertas
                     t.setValvulas(valvulasnuevas);

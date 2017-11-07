@@ -1238,16 +1238,17 @@ public class Lab5 extends javax.swing.JFrame {
         tipo = "Ortogonal";
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
-    
+    public static double porcentajeFinal2;
     public class actualizar implements ActionListener
     {
         public void actionPerformed(ActionEvent evt)
-        {                  
+        {     
             
             //codigo del timer
             diasL++;
             jLabel4.setText("Dias transucurridos en la simulacion: "+diasL);
             acueducto.simulacion(cc.mostrarRegiones(),cc.mostrarGuardados(),registroL,diasL,alertaL);
+            
             
             String concatenar="";
             for(Registro i:registroL)
@@ -1257,6 +1258,12 @@ public class Lab5 extends javax.swing.JFrame {
             }
             jTextArea3.setText(concatenar);
             jTextArea4.setText(alertaL);
+            
+            System.out.println("Corrida de timer");
+            
+            Conexion c=new Conexion();
+            c.updatePorcentaje(porcentajeFinal2, "d");
+            
             
         }
     }

@@ -154,7 +154,7 @@ public class Conexion {
         
     }
     
-    public void updatePorcentaje(double porcentaje){
+    public void updatePorcentaje(double porcentaje,String id){
         try{
         for(Tanque i: Todos){
             if(i instanceof Ortogonal ){
@@ -164,6 +164,15 @@ public class Conexion {
             } else {
                 UpdateOperations xx = ds.createUpdateOperations(Cilindro.class).set("porcentaje",porcentaje);
             }
+            
+            if (i.getIde().equals(id)) 
+            {
+                ds.save(i);
+                System.out.println("se actualiza");
+                
+            }
+            
+            
         }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "NO SIRVE");
