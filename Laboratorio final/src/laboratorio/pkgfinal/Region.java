@@ -75,6 +75,11 @@ public class Region {
                
     }
     
+    /**
+     * metodo para obtener cuanta agua necesita una determinada region
+     * se basa en el promedio de poblacion que tiene la región
+     * @return necesidad
+     */
     public double getNecesidad(){
         double suma =0;
         double promedio = 0;
@@ -86,6 +91,10 @@ public class Region {
         return promedio;
     }
 
+    /**
+     * metodo para obtener la identificacion de la region
+     * @return identificacion
+     */
     public String getIdentificacion() {
         return identificacion;
     }

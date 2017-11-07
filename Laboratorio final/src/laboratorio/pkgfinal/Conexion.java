@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,6 +12,7 @@ import com.mongodb.MongoClient;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import org.mongodb.morphia.query.UpdateOperations;
 
 /**
  * @author Maria Fernanda Lopez 17160
@@ -19,11 +21,13 @@ import javax.swing.JOptionPane;
  */
 public class Conexion {
     private Datastore ds;
+    private List<Tanque> Todos;
     
     /**
      *Constructor for objects of class Conexion
      */
     public Conexion(){
+        Todos = new ArrayList<Tanque>();
         MongoClient mongo = new MongoClient();
         Morphia morphia = new Morphia();
         morphia.map(Tanque.class).map(Registro.class).map(Region.class).map(Cilindro.class).map(Ortogonal.class).map(Cubico.class);
@@ -63,6 +67,10 @@ public class Conexion {
      * @param r 
      */
     public void addRegion(Region r){
+        ds.save(r);
+    }
+    
+    public void addRegistro(Registro r){
         ds.save(r);
     }
     
@@ -125,7 +133,7 @@ public class Conexion {
      * @return tanques guardados
      */
     public List<Tanque> mostrarGuardados(){
-        List<Tanque> Todos = new ArrayList<Tanque>();
+        
         Query<Cubico> query = ds.createQuery(Cubico.class);
         List<Cubico> cubos = query.asList();
         for(Cubico misCubos: cubos){
@@ -143,6 +151,25 @@ public class Conexion {
         }
         
         return Todos;
+        
+    }
+    
+    public void updatePorcentaje(double porcentaje){
+        try{
+        for(Tanque i: Todos){
+            if(i instanceof Ortogonal ){
+                UpdateOperations xx = ds.createUpdateOperations(Ortogonal.class).set("porcentaje",porcentaje);
+            }else if (i instanceof Cubico){
+                UpdateOperations xx = ds.createUpdateOperations(Cubico.class).set("porcentaje",porcentaje);
+            } else {
+                UpdateOperations xx = ds.createUpdateOperations(Cilindro.class).set("porcentaje",porcentaje);
+            }
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "NO SIRVE");
+        }
+        
+        
         
     }
     

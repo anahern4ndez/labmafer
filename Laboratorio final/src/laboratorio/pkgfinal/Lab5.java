@@ -1030,7 +1030,7 @@ public class Lab5 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        double volumen1 = acueducto.volumenRegion(String.valueOf(jComboBox3.getSelectedItem()));
+        String volumen1 = acueducto.volumenRegion(String.valueOf(jComboBox3.getSelectedItem()));
         volumen.setText(String.valueOf(volumen1));
         
         

@@ -11,40 +11,70 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author jose
+ * @author Jose Pablo Cifuentes 
+ * @author Maria Fernanda Lopez
+ * @version 6/11/2017
+ * 
  */
 public class Acueducto {
+    //Atributos
     private ArrayList<Tanque> tanques;
     private ArrayList<Region> region;
     private Conexion cc;
 
+    /**
+     * Constructor for objects of class Acueducto
+     */
     public Acueducto(){
         tanques = new ArrayList<Tanque>();
         region = new ArrayList<Region>();
         cc = new Conexion();
     }
     
+    /**
+     * Metodo para agregar un tanque de tipo cilindrico 
+     * @param objeto de tipo cilindro
+     */
    public void addCilindro(Cilindro c){
        tanques.add(c);
    }
    
+   /**
+    * metodo para agregar un tanque de tipo Ortogonal
+    * @param c objeto de tipo ortogonal
+    */
    public void addOrtogonal(Ortogonal c){
        tanques.add(c);
    }
    
+   /**
+    * metodo para agregar un tanque de tipo cubico
+    * @param c objeto de tipo cubico
+    */
    public void addCubo(Cubico c){
        tanques.add(c);
    }
    
+   /**
+    * metodo para obtener la lista de los tanques que se estan guardando al momento de abrir el programa
+    * @return lista polimorfica de tipo Tanques
+    */
    public ArrayList<Tanque> getList(){
        return tanques;
    }
    
+   /**
+    * metodo para añadir una region a la lista de Regiones
+    * @param r objeto de tipo Region
+    */
    public void addRegion(Region r){
        region.add(r);
    }
    
+   /**
+    * metodo para obtener la lista de Regiones que se estan guardando al momento de inicializar el programa
+    * @return 
+    */
    public ArrayList<Region> getRegion(){
        return region;
    }
@@ -89,7 +119,11 @@ public class Acueducto {
   
    
    
-    
+    /**
+     * Metodo para obtener la información de un determinado tanque entre todos los guardados
+     * @param id identificacion del tanque
+     * @return informacion del tanque
+     */
     
     public String infoTanque(String id)
     {
@@ -109,23 +143,38 @@ public class Acueducto {
         return mensaje;  
     }
     
-    public double volumenRegion(String id){
-        double mensaje=0;
+    /**
+     * metodo para obtener los metros cubicos de una región
+     * @param id identificacion de la región
+     * @return metros cubicos 
+     */
+    public String volumenRegion(String id){
+        String mensaje= "";
+        try{
         List<Tanque> tanque = cc.mostrarGuardados();
         for(Tanque i:tanque)
         {
             if (id.equals(i.getIde())) 
             {
-                mensaje= i.getVolumen();
+                mensaje= String.valueOf(i.getVolumen());
                 
             }
         
+        }
+        }catch(Exception e){
+            mensaje = "No hay ninguna región guardada con ese numero de identificacin";
         }
         
         
         return mensaje; 
         
     }
+    
+    /**
+     * metodo para obtener la información de una determinada region
+     * @param id de la region
+     * @return informacion region
+     */
     public String infoRegion(String id)
     {
         String mensaje="";
@@ -144,7 +193,14 @@ public class Acueducto {
         return mensaje;    
     }
     
-    
+    /**
+     * metodo para hacer la simulación de como se cierran las vavulas
+     * @param region
+     * @param tanque
+     * @param registro
+     * @param dia
+     * @param alerta 
+     */
     public void simulacion(List<Region> region, List<Tanque> tanque,ArrayList<Registro> registro, int dia, String alerta)
     {
         double necesidad;
@@ -153,6 +209,7 @@ public class Acueducto {
         double resultado;
         int valvulasactuales;
         int valvulasnuevas;
+        Registro reg = null;
         
         for(Region r:region)
         {//inicio r
@@ -210,6 +267,8 @@ public class Acueducto {
                     
                     //actualizamos el porcentaje del tanque
                     t.setPorcentaje(porcentajeFinal);
+                    cc.updatePorcentaje(porcentajeFinal);
+                    
                     System.out.println("Porcentaje final"+porcentajeFinal);
                     //recojemos las valvulas que estan abiertas hasta el momento
                     valvulasactuales=t.getValvulas();
@@ -226,8 +285,9 @@ public class Acueducto {
                     if (valvulasnuevas<valvulasactuales) 
                     {
                         //entonces se cerraron valvulas
-                        Registro reg=new Registro((valvulasactuales-valvulasnuevas), "dia "+dia, false, t.getIde());
+                        reg=new Registro((valvulasactuales-valvulasnuevas), "dia "+dia, false, t.getIde());
                         registro.add(reg);
+                        cc.addRegistro(reg);
                         
                     }
                     
@@ -248,15 +308,13 @@ public class Acueducto {
         
       
         
-        
+       
         
     
     
     
     }
     
-    public void revisarIde(String ide){
-        
-    }
+   
     
    }
