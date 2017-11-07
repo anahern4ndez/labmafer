@@ -70,63 +70,14 @@ public class Conexion {
         ds.save(r);
     }
     
+    /**
+     * metodo para agregar el registro
+     * @param r 
+     */
     public void addRegistro(Registro r){
         ds.save(r);
     }
     
-    /**
-     * metodo para devolver todos los cubos guardados
-     * @return lista de guardados
-     */
-    public Cubico[] mostrarCubos(){
-        Cubico[] arreglo = new Cubico[10];
-        Query<Cubico> query = ds.createQuery(Cubico.class); // todos los hoteles
-        
-        List<Cubico> todos = query.asList();
-        System.out.println("Todos los Hoteles");
-        for (Cubico miHotel: todos){
-            for(int i = 0; i<todos.size(); i++){
-                arreglo[i] = todos.get(i);
-            }
-        }
-        return arreglo;
-    }
-    
-    /**
-     * metodo para devolver todos los cilindro guardados
-     * @return lista de guardados
-     */
-    public Cilindro[] mostrarCilindro(){
-        Cilindro[] arreglo = new Cilindro[10];
-        Query<Cilindro> query = ds.createQuery(Cilindro.class); // todos los hoteles
-        
-        List<Cilindro> redondos = query.asList();
-        System.out.println("Todos los Hoteles");
-        for (Cilindro miHotel: redondos){
-            for(int i = 0; i<redondos.size(); i++){
-                arreglo[i] = redondos.get(i);
-            }
-        }
-        return arreglo;
-    }
-    
-    /**
-     * metodo para devolver todos los ortogonales guardados
-     * @return lista de guardados
-     */
-    public Ortogonal[] mostrarOrto(){
-        Ortogonal[] arreglo = new Ortogonal[10];
-        Query<Ortogonal> query = ds.createQuery(Ortogonal.class); // todos los hoteles
-        
-        List<Ortogonal> ortos = query.asList();
-        System.out.println("Todos los Hoteles");
-        for (Ortogonal miHotel: ortos){
-            for(int i = 0; i<ortos.size(); i++){
-                arreglo[i] = ortos.get(i);
-            }
-        }
-        return arreglo;
-    }
     
     /**
      * metodo que si sirve y devulve una lista polimorfica de los tanque guardados
