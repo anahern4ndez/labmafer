@@ -34,7 +34,7 @@ public class Conexion {
         MongoClient mongo = new MongoClient();
         Morphia morphia = new Morphia();
         morphia.map(Tanque.class).map(Registro.class).map(Region.class).map(Cilindro.class).map(Ortogonal.class).map(Cubico.class);
-        ds = morphia.createDatastore(mongo, "Acueducto"); // Base Datos
+        ds = morphia.createDatastore(mongo, "dbmafer"); // Base Datos
     }   
     
     /**
@@ -110,6 +110,7 @@ public class Conexion {
     
     public void updatePorcentaje(double porcentaje,String id){
         try{
+            
         for(Tanque i: Todos){
             if(i instanceof Ortogonal ){
                 UpdateOperations xx = ds.createUpdateOperations(Ortogonal.class).set("porcentaje",porcentaje);
@@ -141,17 +142,20 @@ public class Conexion {
     
     public void updateValvulas(int valvulas, String id){
         try{
+            Query<Ortogonal> query = ds.createQuery(Ortogonal.class);
+            Query<Cilindro> query2 = ds.createQuery(Cilindro.class);
+            Query<Cubico> query3 = ds.createQuery(Cubico.class);
             for(Tanque i: Todos){
                 if( i instanceof Ortogonal){
                     UpdateOperations xx = ds.createUpdateOperations(Ortogonal.class).set("valvUso", valvulas);
-                    ds.update(ortos, xx);
+                    ds.update(query, xx, false);
                     
                 } if( i instanceof Cubico){
                     UpdateOperations xx = ds.createUpdateOperations(Cubico.class).set("valvUso", valvulas);
-                    ds.update(cubos, xx);
+                    ds.update(query3, xx, false);
                 } if(i instanceof Cilindro) {
                     UpdateOperations xx = ds.createUpdateOperations(Cilindro.class).set("valvUso", valvulas);
-                    ds.update(cilindros, xx);
+                    ds.update(query2, xx, false);
                 }
                 if (i.getIde().equals(id)) 
             {
