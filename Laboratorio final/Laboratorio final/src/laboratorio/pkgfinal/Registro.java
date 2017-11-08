@@ -46,7 +46,7 @@ public class Registro
             
             
         }
-        else
+        if(abierto==false)
         {
             x="Se cerraron "+valvulas+" valvula del tanque "+tanque+" el "+fecha;
         }

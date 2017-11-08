@@ -8,7 +8,9 @@ package laboratorio.pkgfinal;
 import com.mongodb.MongoClient;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -24,6 +26,8 @@ public class Lab5 extends javax.swing.JFrame {
        
     public  int idTL;
     public  int idRL;
+    private Date myDate = new Date();
+                            
    
     public  ArrayList<Registro> registroL = new ArrayList<Registro>();
     public int diasL;
@@ -62,8 +66,12 @@ public class Lab5 extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel49 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel50 = new javax.swing.JLabel();
+        jSpinner16 = new javax.swing.JSpinner();
+        cerrar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
@@ -80,14 +88,12 @@ public class Lab5 extends javax.swing.JFrame {
         jSpinner4 = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSpinner5 = new javax.swing.JSpinner();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jSpinner2 = new javax.swing.JSpinner();
-        jButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -98,6 +104,7 @@ public class Lab5 extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         identi = new javax.swing.JTextField();
+        radio = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -255,37 +262,57 @@ public class Lab5 extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la Simulacion"));
 
-        jLabel4.setText("jLabel4");
-
-        jButton1.setText("Comenzar Simulacion");
+        jButton1.setText("Abrir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jLabel49.setText("Seleccione el Id del tanque para abrir o cerrar valvulas");
+
+        jLabel50.setText("Ingrese cuantas valvulas desea utilizar");
+
+        jSpinner16.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
+
+        cerrar.setText("Cerrar");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel49)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel50)
+                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(92, 92, 92)
+                        .addComponent(jSpinner16, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabel49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSpinner16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro"));
@@ -395,8 +422,6 @@ public class Lab5 extends javax.swing.JFrame {
 
         jLabel10.setText("metros");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, null, 1.0d));
-
         jLabel11.setText("Ingrese el largo del tanque:");
 
         jLabel6.setText("metros");
@@ -408,13 +433,6 @@ public class Lab5 extends javax.swing.JFrame {
         jLabel12.setText("metros");
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, null, 1.0d));
-
-        jButton3.setText("Cancelar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jLabel8.setText("metros");
 
@@ -470,6 +488,12 @@ public class Lab5 extends javax.swing.JFrame {
             }
         });
 
+        radio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -489,35 +513,37 @@ public class Lab5 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jRadioButton3)
                 .addGap(23, 23, 23))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(61, 61, 61))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(radio, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114))))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(6, 6, 6)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addComponent(jButton3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton2))
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel14)
-                                .addComponent(jLabel11))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jSpinner2, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                                .addComponent(jSpinner1)
-                                .addComponent(jSpinner3)
-                                .addComponent(jSpinner4)
-                                .addComponent(jSpinner5))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel12))))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel14)
+                        .addComponent(jLabel11))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSpinner2, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                        .addComponent(jSpinner3)
+                        .addComponent(jSpinner4)
+                        .addComponent(jSpinner5))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel13)
+                        .addComponent(jLabel10)
+                        .addComponent(jLabel12))
                     .addContainerGap(58, Short.MAX_VALUE)))
         );
         jPanel7Layout.setVerticalGroup(
@@ -532,13 +558,16 @@ public class Lab5 extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(identi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(radio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(105, 105, 105)
+                    .addGap(108, 108, 108)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel6))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -560,11 +589,7 @@ public class Lab5 extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2)
-                        .addComponent(jButton3))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(60, Short.MAX_VALUE)))
         );
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar nueva Region"));
@@ -925,11 +950,9 @@ public class Lab5 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -939,7 +962,7 @@ public class Lab5 extends javax.swing.JFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(978, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -973,21 +996,61 @@ public class Lab5 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+     int Valvu= (int)jSpinner16.getValue();
+        double necesidad,agua,resultado,porcentajeFinal;
+        String selec= (String) jComboBox4.getSelectedItem();
+        cc.updateValvulas(Valvu, "2");
         
-        if (jButton1.getText().equals("Comenzar Simulacion")) 
+        acueducto.simulacion(cc.mostrarRegiones(),cc.mostrarGuardados(),registroL,diasL,alertaL);
+        for(Tanque t: cc.mostrarGuardados())
         {
-            jButton1.setText("Parar Simulacion");
-            
-            timer.start();
-            
-            
-        }
-        else
-        {
-            jButton1.setText("Comenzar Simulacion");
-            timer.stop();
-            
+            for(Region r: cc.mostrarRegiones())
+            {
+                if (t.getIde().equals(r.getIdentificacion())) 
+                {
+                    if (t.getIde().equals(selec) & t.getPorcentaje()>25)
+                    {
+                        necesidad=r.getNecesidad()*(Math.random() * 3) + 1;
+                        
+                        agua=t.getVolumen()*1000;
+                        resultado=agua-(necesidad*Valvu);
+                        porcentajeFinal=(resultado*t.getPorcentaje())/agua;
+                        t.setPorcentaje(porcentajeFinal);
+                        cc.updatePorcentaje(porcentajeFinal,t.getIde());
+                        cc.updateValvulas(Valvu, t.getIde());
+                        
+                        String fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
+                        if (t.getValvulas()<Valvu) 
+                        {
+                            JOptionPane.showMessageDialog(null,"se abrieron valvulas");
+                            Registro reg=new Registro(t.getValvulas()+Valvu, "dia: "+fecha, true, t.getIde());
+                            registroL.add(reg);
+                            cc.addRegistro(reg);
+                            cc.updateValvulas(Valvu, t.getIde());
+                            jTextArea3.setText(jTextArea3.getText()+reg.getDescripcion()+"\n");
+                            
+                        }
+                        else
+                        {
+                            
+                            
+                            JOptionPane.showMessageDialog(null,"Se cerraron valvulas");
+                            
+                            Registro reg=new Registro(t.getValvulas()-Valvu, "dia: "+fecha, false, t.getIde());
+                            registroL.add(reg);
+                            cc.addRegistro(reg);
+                            cc.updateValvulas(Valvu, t.getIde());
+                            jTextArea3.setText(jTextArea3.getText()+reg.getDescripcion()+"\n");
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+                
+                
+            }
         }
         
         
@@ -996,10 +1059,13 @@ public class Lab5 extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // cuando se abre la pantalla
          List<Tanque> prueba = cc.mostrarGuardados();
+         jComboBox4.removeAllItems();
               String idens = "";
               for(Tanque i: prueba)
                 {
                 jComboBox1.addItem(i.getIde());
+                jComboBox4.addItem(i.getIde());
+                
                 }
        List<Region> regiones = cc.mostrarRegiones();
        String idens1 = "";
@@ -1035,17 +1101,25 @@ public class Lab5 extends javax.swing.JFrame {
         
         
         
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // boton aceptar
-        String ide = identi.getText();
-        boolean ver = acueducto.repeticionTanques(ide);
+        String ide;
+        boolean ver = false;
+        if(identi.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Ingrese datos en la identificacion", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+        ide = identi.getText();
+        ver = acueducto.repeticionTanques(ide);
+        }
+        
       if(ver==true){
-      try{
+      
           if(tipo.equals("Cilindro")){
-                           
-              Cilindro cilindro = new Cilindro((double) jSpinner1.getValue(), (double) jSpinner2.getValue(), identi.getText(), 100,  0,0,  false);
+              try{            
+              Cilindro cilindro = new Cilindro(Double.parseDouble(radio.getText()), (double) jSpinner2.getValue(), identi.getText(), 100,  0,0,  false);
               cilindro.volumen();
               cc.addCilindro(cilindro);
               acueducto.addCilindro(cilindro);
@@ -1054,10 +1128,18 @@ public class Lab5 extends javax.swing.JFrame {
                for(Tanque i:acueducto.getList())
             {
             jComboBox1.addItem(i.getIde());
+            jComboBox4.addItem(i.getIde());
             }
+              }catch(NumberFormatException e){
+                  JOptionPane.showMessageDialog(null, "Ingrese un dato numerico", "Error", JOptionPane.ERROR_MESSAGE);
+              }
               
-          }else if(tipo.equals("Cubico")){
+            
+          }
+          
               
+          if(tipo.equals("Cubico")){
+              try{
               Cubico cubo = new Cubico((double) jSpinner3.getValue(), identi.getText(), 100, 0, 0, false);
               cubo.volumen();
               cc.addCubo(cubo);
@@ -1068,8 +1150,13 @@ public class Lab5 extends javax.swing.JFrame {
             {
             jComboBox1.addItem(i.getIde());
             }
-          }else if (tipo.equals("Ortogonal")){
-              
+              }catch(NumberFormatException e){
+                  JOptionPane.showMessageDialog(null, "Ingrese un dato numerico", "Error", JOptionPane.ERROR_MESSAGE);
+                  
+              }
+          }
+           if (tipo.equals("Ortogonal")){
+              try{
               Ortogonal orto = new Ortogonal((double) jSpinner2.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(), identi.getText(), 100, 0, 0, false);
               orto.volumen();
               cc.addOrtogonal(orto);
@@ -1080,14 +1167,15 @@ public class Lab5 extends javax.swing.JFrame {
             {
             jComboBox1.addItem(i.getIde());
             }
+              }catch (NumberFormatException e){
+                  JOptionPane.showMessageDialog(null, "Ingrese un dato numerico", "Error", JOptionPane.ERROR_MESSAGE);
+              }
           }
-      }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "Por favor ingrese datos validos");
-          identi.setText("");
-      }
+     
         }else{
-            JOptionPane.showMessageDialog(null, "El tanque ya esta ingresado");
+            JOptionPane.showMessageDialog(null, "El tanque ya esta ingresado", "Warning", JOptionPane.WARNING_MESSAGE);
         }
+       
        
          
        
@@ -1095,10 +1183,6 @@ public class Lab5 extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jRadioButton1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton1StateChanged
         // cuando cambie de estado
@@ -1110,7 +1194,7 @@ public class Lab5 extends javax.swing.JFrame {
             jRadioButton2.setSelected(false);
             jRadioButton3.setSelected(false);
 
-            jSpinner1.setEnabled(true);
+            radio.setEnabled(true);
             jSpinner2.setEnabled(true);
             jSpinner3.setEnabled(false);
             jSpinner4.setEnabled(false);
@@ -1131,7 +1215,7 @@ public class Lab5 extends javax.swing.JFrame {
             jRadioButton1.setSelected(false);
             jRadioButton3.setSelected(false);
 
-            jSpinner1.setEnabled(false);
+            radio.setEnabled(false);
             jSpinner2.setEnabled(false);
             jSpinner3.setEnabled(true);
             jSpinner4.setEnabled(false);
@@ -1152,7 +1236,7 @@ public class Lab5 extends javax.swing.JFrame {
             jRadioButton1.setSelected(false);
             jRadioButton2.setSelected(false);
 
-            jSpinner1.setEnabled(false);
+            radio.setEnabled(false);
             jSpinner2.setEnabled(true);
             jSpinner3.setEnabled(true);
             jSpinner4.setEnabled(true);
@@ -1168,26 +1252,40 @@ public class Lab5 extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // boton aceptar
-        String identi = ide2.getText();
-        boolean ver1 = acueducto.repeticionRegion(identi);
-        boolean ver2 = acueducto.repeticionTanques(identi);
+        String identi;
+        boolean ver1 = false;
+        boolean ver2 = true;
+        if(ide2.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Ingrese datos en la identificacion", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            identi = ide2.getText();
+             ver1 = acueducto.repeticionRegion(identi);
+            ver2 = acueducto.repeticionTanques(identi);
+        }
+        
         if(ver1==true && ver2==false){
         try{
-        if ((jTextField1.getText().equals("")) || (jTextField2.getText().equals("")) || (jTextField3.getText().equals("")) || (jTextField4.getText().equals("")) || (jTextField5.getText().equals("")) || (jTextField6.getText().equals("")) || (jTextField7.getText().equals("")) || (jTextField8.getText().equals("")) || (jTextField9.getText().equals("")) || (jTextField10.getText().equals(""))                 )
+             
+        if ( (jTextField1.getText().equals("")) || (jTextField2.getText().equals("")) || (jTextField3.getText().equals("")) || (jTextField4.getText().equals("")) || (jTextField5.getText().equals("")) || (jTextField6.getText().equals("")) || (jTextField7.getText().equals("")) || (jTextField8.getText().equals("")) || (jTextField9.getText().equals("")) || (jTextField10.getText().equals(""))                 )
         {// hay campos sin llenar
 
             JOptionPane.showMessageDialog(null, "Hay campos de texto sin llenar!");
+           
 
         }
         else
         {// no hay campos vacios
 
+            try{
             
-            
-            Region r= new Region(ide2.getText(), jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(), jTextField7.getText(), jTextField8.getText(), jTextField9.getText(), jTextField10.getText(), (double) jSpinner1.getValue(), (double) jSpinner2.getValue(), (double) jSpinner3.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(), (double) jSpinner6.getValue(), (double) jSpinner7.getValue(), (double) jSpinner8.getValue(), (double) jSpinner9.getValue(), (double) jSpinner10.getValue());
+            Region r= new Region(ide2.getText(), jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(), jTextField7.getText(), jTextField8.getText(), jTextField9.getText(), jTextField10.getText(), (double) jSpinner14.getValue(), (double) jSpinner2.getValue(), (double) jSpinner3.getValue(), (double) jSpinner4.getValue(), (double) jSpinner5.getValue(), (double) jSpinner6.getValue(), (double) jSpinner7.getValue(), (double) jSpinner8.getValue(), (double) jSpinner9.getValue(), (double) jSpinner10.getValue());
             cc.addRegion(r);
             acueducto.addRegion(r);
             JOptionPane.showMessageDialog(null, "Se ha guardado con exito");
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Ingrese datos numericos en el promedio de poblacion", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
                                
 
         } 
@@ -1196,7 +1294,7 @@ public class Lab5 extends javax.swing.JFrame {
         
         }
         }else{
-            JOptionPane.showMessageDialog(null, "El tanque no existe o la region ya ha sido guardada");
+            JOptionPane.showMessageDialog(null, "El tanque no existe o la region ya ha sido guardada", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         for(Region x:cc.mostrarRegiones())
         {
@@ -1238,6 +1336,10 @@ public class Lab5 extends javax.swing.JFrame {
         tipo = "Ortogonal";
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
+    private void radioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioActionPerformed
+
     public static double porcentajeFinal2;
     public class actualizar implements ActionListener
     {
@@ -1246,7 +1348,7 @@ public class Lab5 extends javax.swing.JFrame {
             
             //codigo del timer
             diasL++;
-            jLabel4.setText("Dias transucurridos en la simulacion: "+diasL);
+            //jLabel4.setText("Dias transucurridos en la simulacion: "+diasL);
             acueducto.simulacion(cc.mostrarRegiones(),cc.mostrarGuardados(),registroL,diasL,alertaL);
             
             
@@ -1309,16 +1411,17 @@ public class Lab5 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cerrar;
     private javax.swing.JTextField ide2;
     private javax.swing.JTextField identi;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1352,7 +1455,6 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -1362,7 +1464,9 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1383,13 +1487,13 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner10;
     private javax.swing.JSpinner jSpinner11;
     private javax.swing.JSpinner jSpinner12;
     private javax.swing.JSpinner jSpinner13;
     private javax.swing.JSpinner jSpinner14;
     private javax.swing.JSpinner jSpinner15;
+    private javax.swing.JSpinner jSpinner16;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
     private javax.swing.JSpinner jSpinner4;
@@ -1413,6 +1517,7 @@ public class Lab5 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField radio;
     private javax.swing.JTextField volumen;
     // End of variables declaration//GEN-END:variables
 }

@@ -268,6 +268,7 @@ public class Acueducto {
                     //actualizamos el porcentaje del tanque
                     t.setPorcentaje(porcentajeFinal);
                     cc.updatePorcentaje(porcentajeFinal,t.getIde());
+              
                     Lab5.porcentajeFinal2=porcentajeFinal;
                     
                     System.out.println("Porcentaje final"+t.identificacion+" ---"+porcentajeFinal);
@@ -281,8 +282,9 @@ public class Acueducto {
                     
                     //actualizamos las valvulas abiertas
                     t.setValvulas(valvulasnuevas);
+                    cc.updateValvulas(valvulasnuevas, t.getIde());
                     
-                    //comparamos si se abrieron o cerraron valvulas
+                                     //comparamos si se abrieron o cerraron valvulas
                     if (valvulasnuevas<valvulasactuales) 
                     {
                         //entonces se cerraron valvulas
@@ -316,6 +318,30 @@ public class Acueducto {
     
     }
     
-   
+   public double miSimulacion(String ide, int n){
+       Region r = new Region();
+       double necesidad = 0;
+       double porcentajefinal = 0;
+       List<Region> regiones = cc.mostrarRegiones();
+       List<Tanque> tanques = cc.mostrarGuardados();
+       for(Region rr: regiones){
+           if(rr.getIdentificacion().equals(ide)){
+               necesidad = rr.getNecesidad();
+           } 
+       }
+       for(Tanque i: tanques){
+           if(i.getIde().equals(ide)){
+               double porcentaje = (necesidad*100)* n/(i.getVolumen()*1000);
+               porcentajefinal = i.getPorcentaje() - porcentaje;
+               i.setPorcentaje(porcentajefinal);
+               cc.updatePorcentaje(porcentaje, ide);
+               cc.updateValvulas(n, ide);
+               i.setValvulas(n);
+           }
+       }
+       
+       return porcentajefinal;
+       
+   }
     
    }

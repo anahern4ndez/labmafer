@@ -22,6 +22,9 @@ import org.mongodb.morphia.query.UpdateOperations;
 public class Conexion {
     private Datastore ds;
     private List<Tanque> Todos;
+    private List<Cubico> cubos;
+    private List<Cilindro> cilindros;
+    private List<Ortogonal> ortos;
     
     /**
      *Constructor for objects of class Conexion
@@ -86,17 +89,17 @@ public class Conexion {
     public List<Tanque> mostrarGuardados(){
         
         Query<Cubico> query = ds.createQuery(Cubico.class);
-        List<Cubico> cubos = query.asList();
+        cubos = query.asList();
         for(Cubico misCubos: cubos){
             Todos.add(misCubos);
         }
         Query<Cilindro> query2 = ds.createQuery(Cilindro.class);
-        List<Cilindro> cilindros = query2.asList();
+        cilindros = query2.asList();
         for(Cilindro misCilindros: cilindros){
             Todos.add(misCilindros);
         }
         Query<Ortogonal> query3 = ds.createQuery(Ortogonal.class);
-        List<Ortogonal> ortos = query3.asList();
+        ortos = query3.asList();
         for(Ortogonal misOrtos: ortos){
             Todos.add(misOrtos);
         }
@@ -110,10 +113,13 @@ public class Conexion {
         for(Tanque i: Todos){
             if(i instanceof Ortogonal ){
                 UpdateOperations xx = ds.createUpdateOperations(Ortogonal.class).set("porcentaje",porcentaje);
-            }else if (i instanceof Cubico){
+                ds.update(ortos, xx);
+            } if (i instanceof Cubico){
                 UpdateOperations xx = ds.createUpdateOperations(Cubico.class).set("porcentaje",porcentaje);
-            } else {
+                ds.update(cubos, xx);
+            } if(i instanceof Cilindro){
                 UpdateOperations xx = ds.createUpdateOperations(Cilindro.class).set("porcentaje",porcentaje);
+                ds.update(cilindros, xx);
             }
             
             if (i.getIde().equals(id)) 
@@ -131,6 +137,33 @@ public class Conexion {
         
         
         
+    }
+    
+    public void updateValvulas(int valvulas, String id){
+        try{
+            for(Tanque i: Todos){
+                if( i instanceof Ortogonal){
+                    UpdateOperations xx = ds.createUpdateOperations(Ortogonal.class).set("valvUso", valvulas);
+                    ds.update(ortos, xx);
+                    
+                } if( i instanceof Cubico){
+                    UpdateOperations xx = ds.createUpdateOperations(Cubico.class).set("valvUso", valvulas);
+                    ds.update(cubos, xx);
+                } if(i instanceof Cilindro) {
+                    UpdateOperations xx = ds.createUpdateOperations(Cilindro.class).set("valvUso", valvulas);
+                    ds.update(cilindros, xx);
+                }
+                if (i.getIde().equals(id)) 
+            {
+                ds.save(i);
+                System.out.println("se actualiza");
+                
+            }
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar el numero de valvulas en uso en la base de datos");
+        
+    }
     }
     
     /**
